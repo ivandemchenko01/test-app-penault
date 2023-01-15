@@ -1,6 +1,8 @@
 /TestApp.ApiRequestManager/obj/
-/TestApp.Core
+/TestApp.ApiRequestManager/bin/
+/TestApp.Core/bin
+/TestApp.Core/obj
 /TestApp.Domain/obj/
-/TestApp.WebApi/bin/Debug
 /TestApp.Domain/bin/
+/TestApp.WebApi/bin/
 /TestApp.WebApi/obj/
