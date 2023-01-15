@@ -44,6 +44,7 @@ services.AddOptions();
 
 services.Configure<BinanceOptions>(configuration.GetSection(BinanceOptions.Section));
 services.Configure<KunaOptions>(configuration.GetSection(KunaOptions.Section));
+services.Configure<KucoinOptions>(configuration.GetSection(KucoinOptions.Section));
 
 
 services.Configure<List<string>>(configuration.GetSection("AllowedCoins"));
