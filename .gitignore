@@ -2,3 +2,5 @@
 /TestApp.Core
 /TestApp.Domain/obj/
 /TestApp.WebApi/bin/Debug
+/TestApp.Domain/bin/
+/TestApp.WebApi/obj/
