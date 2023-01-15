@@ -1,0 +1,142 @@
+2023-01-15 21:23:19.211 +02:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider' while attempting to activate 'Microsoft.AspNetCore.Authentication.AuthenticationMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2023-01-15 21:24:22.631 +02:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider' while attempting to activate 'Microsoft.AspNetCore.Authentication.AuthenticationMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2023-01-15 21:25:07.450 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-15 21:25:08.324 +02:00 [INF] Now listening on: https://localhost:7276
+2023-01-15 21:25:08.326 +02:00 [INF] Now listening on: http://localhost:5156
+2023-01-15 21:25:08.327 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-15 21:25:08.329 +02:00 [INF] Hosting environment: Development
+2023-01-15 21:25:08.329 +02:00 [INF] Content root path: C:\Users\Admin\source\repos\TestApp\TestApp.WebApi
+2023-01-15 21:25:09.973 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/index.html - -
+2023-01-15 21:25:10.381 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/index.html - - - 200 - text/html;charset=utf-8 411.4545ms
+2023-01-15 21:25:10.495 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - -
+2023-01-15 21:25:10.504 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 9.3204ms
+2023-01-15 21:25:10.629 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_vs/browserLink - -
+2023-01-15 21:25:10.733 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 103.6193ms
+2023-01-15 21:25:11.111 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - -
+2023-01-15 21:25:11.131 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2023-01-15 21:25:11.657 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 546.1103ms
+2023-01-15 21:25:21.965 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=1&inputCurrency=BTC&outputCurrency=ETH - -
+2023-01-15 21:25:21.986 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:25:22.291 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:25:22.296 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Pair BTCETH not found.
+   at TestApp.WebApi.Services.ExchangeService.EstimateAsync(EstimateQuery query) in C:\Users\Admin\source\repos\TestApp\TestApp.WebApi\Services\ExchangeService.cs:line 34
+   at TestApp.WebApi.Handlers.ExchangeHandler.Estimate(Decimal inputAmount, String inputCurrency, String outputCurrency, ExchangeService service, IValidator`1 validator, IMapper mapper) in C:\Users\Admin\source\repos\TestApp\TestApp.WebApi\Handlers\ExchangeHandler.cs:line 33
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-01-15 21:25:22.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=1&inputCurrency=BTC&outputCurrency=ETH - - - 500 - text/plain;+charset=utf-8 386.0214ms
+2023-01-15 21:25:31.742 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=1&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:25:31.747 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:25:31.766 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:25:31.770 +02:00 [INF] Writing value of type 'EstimateDto' as Json.
+2023-01-15 21:25:31.786 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:25:31.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=1&inputCurrency=ETH&outputCurrency=BTC - - - 200 - application/json;+charset=utf-8 47.5185ms
+2023-01-15 21:25:51.548 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:25:51.550 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:25:51.552 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:25:51.554 +02:00 [INF] Writing value of type 'EstimateDto' as Json.
+2023-01-15 21:25:51.555 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:25:51.557 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - - - 200 - application/json;+charset=utf-8 8.7895ms
+2023-01-15 21:26:23.996 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:26:23.999 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:26:24.002 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:26:24.004 +02:00 [INF] Writing value of type 'EstimateDto' as Json.
+2023-01-15 21:26:24.005 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:26:24.007 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - - - 200 - application/json;+charset=utf-8 10.6010ms
+2023-01-15 21:26:24.958 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:26:24.960 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:26:24.963 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:26:24.967 +02:00 [INF] Writing value of type 'EstimateDto' as Json.
+2023-01-15 21:26:24.969 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:26:24.971 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - - - 200 - application/json;+charset=utf-8 12.0824ms
+2023-01-15 21:26:40.408 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-15 21:26:41.125 +02:00 [INF] Now listening on: https://localhost:7276
+2023-01-15 21:26:41.128 +02:00 [INF] Now listening on: http://localhost:5156
+2023-01-15 21:26:41.129 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-15 21:26:41.130 +02:00 [INF] Hosting environment: Development
+2023-01-15 21:26:41.131 +02:00 [INF] Content root path: C:\Users\Admin\source\repos\TestApp\TestApp.WebApi
+2023-01-15 21:26:42.627 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/index.html - -
+2023-01-15 21:26:43.129 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/index.html - - - 200 - text/html;charset=utf-8 489.8321ms
+2023-01-15 21:26:43.307 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_vs/browserLink - -
+2023-01-15 21:26:43.317 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - -
+2023-01-15 21:26:43.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 8.9977ms
+2023-01-15 21:26:43.539 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 231.8021ms
+2023-01-15 21:26:43.901 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - -
+2023-01-15 21:26:43.912 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2023-01-15 21:26:44.066 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 164.8238ms
+2023-01-15 21:26:55.730 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=5&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:26:55.750 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:26:55.920 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:26:55.924 +02:00 [INF] Writing value of type 'EstimateDto' as Json.
+2023-01-15 21:26:55.935 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:26:55.937 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=5&inputCurrency=ETH&outputCurrency=BTC - - - 200 - application/json;+charset=utf-8 206.7941ms
+2023-01-15 21:27:06.171 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:27:06.176 +02:00 [INF] Executing endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:27:06.179 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:27:06.182 +02:00 [INF] Writing value of type 'EstimateDto' as Json.
+2023-01-15 21:27:06.184 +02:00 [INF] Executed endpoint 'HTTP: GET /estimate/ => Estimate'
+2023-01-15 21:27:06.188 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=10&inputCurrency=ETH&outputCurrency=BTC - - - 200 - application/json;+charset=utf-8 17.8345ms
+2023-01-15 21:27:27.500 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/get-rates/?baseCurrency=ETH&quoteCurrency=BTC - -
+2023-01-15 21:27:27.505 +02:00 [INF] Executing endpoint 'HTTP: GET /get-rates/ => GetRates'
+2023-01-15 21:27:27.530 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:27:27.532 +02:00 [INF] Writing value of type 'List`1' as Json.
+2023-01-15 21:27:27.541 +02:00 [INF] Executed endpoint 'HTTP: GET /get-rates/ => GetRates'
+2023-01-15 21:27:27.544 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/get-rates/?baseCurrency=ETH&quoteCurrency=BTC - - - 200 - application/json;+charset=utf-8 43.4170ms
+2023-01-15 21:28:07.827 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/index.html - -
+2023-01-15 21:28:07.855 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/index.html - - - 200 - text/html;charset=utf-8 27.9972ms
+2023-01-15 21:28:07.914 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - -
+2023-01-15 21:28:07.914 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_vs/browserLink - -
+2023-01-15 21:28:07.917 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 2.8125ms
+2023-01-15 21:28:07.965 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 51.6347ms
+2023-01-15 21:28:08.326 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - -
+2023-01-15 21:28:08.331 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4.8363ms
+2023-01-15 21:28:20.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/get-rates/?baseCurrency=ETH&quoteCurrency=BTC - -
+2023-01-15 21:28:20.217 +02:00 [INF] Executing endpoint 'HTTP: GET /get-rates/ => GetRates'
+2023-01-15 21:28:20.221 +02:00 [INF] Setting HTTP status code 200.
+2023-01-15 21:28:20.222 +02:00 [INF] Writing value of type 'List`1' as Json.
+2023-01-15 21:28:20.223 +02:00 [INF] Executed endpoint 'HTTP: GET /get-rates/ => GetRates'
+2023-01-15 21:28:20.225 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/get-rates/?baseCurrency=ETH&quoteCurrency=BTC - - - 200 - application/json;+charset=utf-8 10.2694ms
+2023-01-15 21:28:51.751 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-15 21:28:52.542 +02:00 [INF] Now listening on: https://localhost:7276
+2023-01-15 21:28:52.544 +02:00 [INF] Now listening on: http://localhost:5156
+2023-01-15 21:28:52.547 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-15 21:28:52.548 +02:00 [INF] Hosting environment: Development
+2023-01-15 21:28:52.549 +02:00 [INF] Content root path: C:\Users\Admin\source\repos\TestApp\TestApp.WebApi
+2023-01-15 21:28:53.679 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/index.html - -
+2023-01-15 21:28:54.033 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/index.html - - - 200 - text/html;charset=utf-8 355.2174ms
+2023-01-15 21:28:54.125 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - -
+2023-01-15 21:28:54.140 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 14.1442ms
+2023-01-15 21:28:54.268 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_vs/browserLink - -
+2023-01-15 21:28:54.332 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 63.6718ms
+2023-01-15 21:28:54.832 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - -
+2023-01-15 21:28:54.842 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2023-01-15 21:28:55.050 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 218.2543ms
+2023-01-15 21:29:07.160 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7276/estimate/?inputAmount=1&inputCurrency=ETH&outputCurrency=BTC - -
+2023-01-15 21:29:07.172 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-01-15 21:29:07.177 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.<>c__DisplayClass0_0.<<HandleAsync>g__Handle|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-01-15 21:29:07.224 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7276/estimate/?inputAmount=1&inputCurrency=ETH&outputCurrency=BTC - - - 500 - text/plain;+charset=utf-8 63.8525ms
