@@ -1,6 +1,4 @@
-﻿using BinanceExchange.API.Client;
-using BinanceExchange.API.Models.Response;
-using Kucoin.Net.Clients;
+﻿using Kucoin.Net.Clients;
 using Kucoin.Net.Objects;
 using Microsoft.Extensions.Options;
 using TestApp.Core.Configuration;
@@ -46,15 +44,6 @@ public class KucoinCryptoProvider : ICryptoProvider
             .ToList();
 
         return pairs;
-    }
-
-    private ExchangePair ConvertToPair(SymbolPriceResponse response)
-    {
-        return new ExchangePair()
-        {
-            Rate = response.Price,
-            Symbol = response.Symbol
-        };
     }
 
 
