@@ -1,4 +1,5 @@
-﻿using TestApp.Core.Providers;
+﻿using TestApp.Core.Extensions;
+using TestApp.Core.Providers;
 using TestApp.Domain.Models;
 using TestApp.WebApi.Queries;
 using TestApp.WebApi.Services.Interfaces;
@@ -18,28 +19,49 @@ public class ExchangeService : IExchangeService
         if (!_ratesService.Filtered.Any())
             throw new Exception($"No pairs on server");
 
-        var rates = new Dictionary<ECryptoProvider, decimal>();
-        string findPair = query.InputCurrency + query.OutputCurrency;
+        var rates = new Dictionary<ECryptoProvider, ExchangePair>();
 
         foreach (var provider in _ratesService.Filtered.AsParallel())
         {
-            var rate = provider.Value.Find(pair => pair.Symbol == findPair);
-            if (rate is null)
-                continue;
+            var pairs = provider.Value;
 
-            rates.Add(provider.Key, rate.Rate);
+            var pair = pairs.GetPair(query.InputCurrency, query.OutputCurrency);
+
+            rates.Add(provider.Key, pair);
         }
 
         if (rates.Count == 0)
-            throw new ArgumentException($"Pair {findPair} not found.");
+            throw new ArgumentException($"Pairs not found.");
 
-        var max = rates.MaxBy(rate => rate.Value);
+        var prices = new Dictionary<ECryptoProvider, decimal>();
+
+        foreach (var pair in rates)
+        {
+            decimal price = 0;
+            if (pair.Value.Reversed)
+                price = query.InputAmount / pair.Value.Rate;
+            else
+                price = query.InputAmount * pair.Value.Rate;
+
+            prices.Add(pair.Key, price);
+        }
+
+
+        var max = prices.MaxBy(price => price.Value);
+
 
         return new Estimate
         {
             Name = max.Key.ToString(),
-            OutputAmount = max.Value * query.InputAmount
+            OutputAmount = max.Value
         };
+    }
+
+    
+
+    private ExchangePair FindPair(List<ExchangePair> pairs, string pair)
+    {
+        return pairs.Find(p => p.Symbol.ToLower() == pair.ToLower());
     }
 
     public async Task<List<Rate>> GetRatesAsync(GetRatesQuery query)
@@ -54,13 +76,23 @@ public class ExchangeService : IExchangeService
 
         foreach (var provider in _ratesService.Filtered.AsParallel())
         {
-            foreach (var pairRate in provider.Value)
-                if (pairRate.Symbol.ToUpper() == pair)
-                    rates.Add(new Rate
-                    {
-                        ExchangeName = provider.Key.ToString(),
-                        Value = pairRate.Rate
-                    });
+            var neededPair = provider.Value.Find(pair => pair.Symbol == query.BaseCurrency + query.QuoteCurrency);
+
+            if (neededPair is null)
+            {
+                neededPair = provider.Value.Find(pair => pair.Symbol == query.QuoteCurrency + query.BaseCurrency);
+
+                decimal price = (decimal)1.0 / neededPair.Rate;
+
+                neededPair.Rate = price;                
+            }
+
+            if (neededPair is not null)
+                rates.Add(new Rate
+                {
+                    ExchangeName = provider.Key.ToString(),
+                    Value = neededPair.Rate
+                });
         }
 
         return rates;

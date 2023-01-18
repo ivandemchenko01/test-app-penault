@@ -1,5 +1,5 @@
-﻿using BinanceExchange.API.Client;
-using BinanceExchange.API.Models.Response;
+﻿using Binance.Net.Clients;
+using CryptoExchange.Net.Authentication;
 using Microsoft.Extensions.Options;
 using TestApp.Core.Configuration;
 using TestApp.Core.Interfaces;
@@ -21,39 +21,30 @@ public class BinanceCryptoProvider : ICryptoProvider
         _coins = allowedCoins.Value.Combinations();
 
         _options = options.Value;
-        _client = new BinanceClient(new()
-        {
-            ApiKey = _options.Key,
-            SecretKey = _options.SecretKey,
-        });
+        _client = new BinanceClient(new() { ApiCredentials = new ApiCredentials(options.Value.Key, options.Value.SecretKey)});
     }
 
 
     public async Task<List<ExchangePair>> GetAsync()
     {
-        var prices = await _client.GetAllPrices();
-        prices = prices.
-            Where(price => _coins.Contains(price.Symbol))
+        var prices = await _client.SpotApi.ExchangeData.GetTickersAsync();
+
+        var neededCoins = prices.Data
+            .Where(price => _coins.Contains(price.Symbol.Replace("-", "")))
             .ToList();
 
-        var list = new List<SymbolPriceResponse>();
-        foreach (var price in prices)
-            list.Add(await _client.GetPrice(price.Symbol));
-
-
-        return prices
-            .Select(ConvertToPair)
+        var pairs =  neededCoins
+            .Select(price => new ExchangePair
+            {
+                Symbol = price.Symbol,
+                Rate = (decimal)price.LastPrice,
+                
+            })
             .ToList();
+
+        return pairs;
     }
 
-    private ExchangePair ConvertToPair(SymbolPriceResponse response)
-    {
-        return new ExchangePair()
-        {
-            Rate = response.Price,
-            Symbol = response.Symbol
-        };
-    }
 
 
 }

@@ -5,5 +5,6 @@ public class ExchangePair
 {
     public decimal Rate { get; set; }
     public string Symbol { get; set; }
+    public bool Reversed { get; set; }
 }
 
